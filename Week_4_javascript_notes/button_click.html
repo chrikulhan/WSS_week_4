@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week_4_button_click</title>
+<!--    add in your CSS link to your file or external files here. -->
+</head>
+<body>
+
+<!--Write your HTML content here-->
+<!--want your browser to read the content correctly, from top to bottom.-->
+  <button>Click here!</button>
+
+<script>
+
+//Write your script here//
+
+// //first find an element on our page:
+// //let us how you create a variable (called a "variable declaration")
+// //document is the whole webpage (DOM= Document Object Model)
+// //query selector means: Use CSS selectors to find an element, it will return the first
+// //matching element. Can also select by class or id if that's helpful.
+//   let button = document.querySelector('button')
+// ///-let means = create a variable, and then you give it a name. Here
+// //the variable is called "button".
+// //-document means the whole current webpage
+// //-queryselector = use css selectors to find an element. This will find
+// //the first matching element reading from top to bottom. Can select
+// //by class or id
+//
+//   //add an event listener to "button", what do we do when we find button, the event is 'click', so when the
+//   //button is clicked, a function will happen. Don't put anything in the parentheses, but do add
+//   //what happens when the button is clicked inside the curly braces {}
+//   button.addEventListener('click', function() {
+//       //-another type of event = 'mouseover' event, where you count the number of times the mouse passes
+//       //over the thing.
+//       //-what happens when the button is clicked (make an alert, or something else..)
+//     alert('You clicked the button!')
+//   })
+
+
+////-----------
+// //change to a "mouse over" event:
+// button.addEventListener('mouseover', function() {
+//    alert('You hovered over the button!')
+//})
+
+////-------
+// //single quotes are strings (like python), you can also use double quotes (like java or C#).
+//function definition portion of the code:
+//this portion of the code can pass a definition to other parts of the code.
+//function() {
+// alert('You clicked the button!')
+//})
+//
+//Another way to write the code for the alert, this will be the exact same behavior:
+//
+// let button = document.querySelector('button')
+//
+// //defining the function, creates the logic for the function and waits until the logic is called:
+// function showAlert() {
+//     alert('You clicked the button!')
+// }
+//
+////give the add EventListener an argument:
+////first argument to be ready to respond to is 'click', the second argument is a function
+//// definition, providing the instructions for what to do when the event is clicked.
+// button.addEventListener('click', showAlert)
+
+//---------------------
+//Whitespace has no meaning (unlike Python) but typically follows Python/Java/C#
+//  -like style for readability
+// Use { } to indicate blocks of code, for example, functions, loops, conditional statements
+// You can end lines with a semicolon ; or not, but it’s (rarely) needed.
+// (https://news.codecademy.com/your-guide-to-semicolons-in-javascript/)
+
+//Don't need to specify *types* of variables, but you do need the word "let" in front of your
+//variables.
+
+// //-----------------
+// //to change the text of the button and
+// // change what happens when the button is clicked:
+// let button = document.querySelector('button')
+//
+// button.addEventListener('click', function() {
+//     alert('You clicked the button!')
+//
+//     //to change the text of the button:vvv
+//     button.innerHTML = 'You clicked the button!'
+//
+//     //to change the style of the button:
+//     button.style.backgroundColor = 'red'
+// })
+//-----------
+//to remove the button, but still keep the script in the code:
+let button = document.querySelector('button')
+
+button.addEventListener('click', function() {
+    alert('You clicked the button!')
+
+    // //to change the text of the button:vvv
+    // button.innerHTML = 'You clicked the button!'
+    //
+    // //to change the style of the button:
+    // button.style.backgroundColor = 'red'
+
+    //to remove the button once it's been clicked:
+    button.remove()
+
+})
+
+//-----------
+//Use curly braces {} to indicate blocks of code. In python, you use
+//indentations.
+//Can add semicolons at the end of code, but you don't have to.
+//--------
+
+//---To add interactivity on a page, we need to know what's happening
+// on a page
+//
+// **Add event listeners**
+// To respond to an event, first, we need to figure out what will cause
+// the event to happen, and what will happen in response
+// -Many event types, for example:
+// -User clicks on an element
+// -User moves the mouse cursor over an element
+// -User types in an input, or selects from a select
+// -Page loads
+// -User presses a key
+// -Browser window resizes
+// -Various other events
+
+//To add an event listener, need to identify:
+// 1. What element will be the source of the event:
+//      -If we want to resize: The browser window (window),
+//      the page (document)?
+//      -Respond to a button click, the button will generate a click event.
+//      A div?
+//      Any element with class="click-me" ?
+// 2. What kind of event
+//      Clicks,
+//      resizes,
+//      mouse events,
+//      key presses…?
+// 3. What should happen in response to the event?
+//     -Define a function that will run when the event happens
+//     to the element.
+//     -This function can modify the element that caused the event,
+//          or modify another part of the page,
+//          or modify some other variables in the script.
+//          or create elements
+//          or change elements
+//          or change element properties
+//          or modify some of the variables in the script
+//          ...
+//---------
+//Example: to validate the length of text entered into a form input,
+// we could respond to key events generated for the input element,
+// and run a validation function, then respond to the user that they've
+//typed in too many characters or too many numbers.
+//      **example, a credit card number should be 16 digits.
+
+// For a game, we might need to respond to mouse events over a canvas
+// element, and run a function to move the game character sprite
+
+// Full list of DOM object events
+// http://www.w3schools.com/jsref/dom_obj_event.asp
+//-------------------
+
+//**JavaScript Function Syntax**
+//  -Use function keyword to define
+//  -Arguments, if any, in parenthesis
+//  -Use { } for the body of the function
+//  -Return data if needed
+
+//****Stand alone function definitions: vvv****
+//function = keyword
+//sayhello() = name of function, needs parentheses to idicate it is a
+//  function. Can put arguments in the parentheses as needed.
+//  curly braces go at the beginning of the function and at the end.
+//  indentation is optional, but is good practice for readability.
+//
+function sayHello() {
+    alert('Hello')
+}
+
+//Another function adds two parameters (a and b), do not need to specify
+//by types.
+//sum = the new variable.
+//return will give back something.
+
+function add(a,b) {
+    let sum = a + b
+    return sum
+}
+
+//--------------------
+// //***Inline function definition:
+// let button = document.querySelector('button')
+//
+// //**inline here: where the function is inside another thing. Still
+// //have the parentheses and the curly braces. vvv
+// button.addEventListener('click', function() {
+//     alert('You clicked the button!')
+//     button.remove()
+// })
+//------------------
+
+// **Passing a Function as an Argument**
+//
+// A function definition is a "first class object" in JavaScript
+// This means a function definition can be treated in the same way
+//      as any other variables in the program
+// A function definition can be passed as a argument to a function,
+//      or returned from a function
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
