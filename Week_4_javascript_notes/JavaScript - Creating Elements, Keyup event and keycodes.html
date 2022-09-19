@@ -2,9 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JavaScript - Creating Elements, Keyup event and keycodes</title>
+    <title>JavaScript_Creating_Elements_Keyup_event_and_keycodes</title>
 </head>
 <body>
 
+<!--***Creating Elements***-->
+
+<!--Create a page with-->
+  <!--An input element-->
+  <!--A button with the text Add-->
+  <!--An empty unordered list-->
+<!--When the user types in the input and clicks the button,
+  use whatever text is in the input to make a new list item,
+   and add it to the list-->
+<!--Clear the input (tip: you can read and set the input’s value)-->
+
+<!--order of operations:
+1. decide what you want on the page
+2. put those things in the body
+3. give each of the elements an id-->
+
+  <p>Enter some text to add to the list</p>
+  <input id="new-text"></input>
+  <button id ="add-text">Add</button>
+
+<!--empty unordered list-->
+  <ul id="list-of-text"></ul>
+
+<script>
+// order of operations continued
+// 4.need to find things in the script, so make some variables for
+//the elements created in the body.
+
+    let textInput = document.querySelector('#new-text')
+    let addButton = document.querySelector('#add-text')
+    let textList = document.querySelector('#list-of-text')
+
+//5. What events do we need to respond to?
+//  -Add event listeners to the add button
+//  because we want something to happen when that is clicked.
+
+    addButton.addEventListener('click', function(){
+//6.Read the text in the input
+        let newText = textInput.value
+            console.log(newText) //make sure everything is set up correct and
+                        //elements are being found correctly and
+                        // have the right event listener attached
+                        // the right thing.
+// 7. Create a new li element
+        //ask the document to create an element
+        // (have to give it a tag name, here ('li')
+        //Also make this happen in a new variable
+        let newListItem = document.createElement('li')
+// 8a. The li element text should be the text from the input
+        //newListItem isn't yet attached to the page, but we can still
+        //do things like innerHTML that will be the text from the input.
+        newListItem.innerHTML = newText
+        //In order to make the list item appear in the flow of the page,
+        //we need to attach it to our page somehow.
+        //The way this is done is by attaching an element to another element
+        //OR by nesting certain elements within other elements
+        //(for example an list item within an unordered list is a child
+        //of the unordered list.)
+//8b. Add the new "li" element as a child of the "ul" element.
+        textList.appendChild(newListItem)
+// 9. Clear the text in the input.
+        //we can set the text as well, '' is an empty string, so it will be empty.
+        textInput.value = ''
+    })
+
+</script>
+
 </body>
+
+<script>
+
+
+
+
+</script>
 </html>
