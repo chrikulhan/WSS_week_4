@@ -1,0 +1,34 @@
+<!--More Types of Events-->
+
+<!--Let's work with some more types of event
+- mouseover and mouseout-->
+<!--mouseover event is fired when the mouse cursor moves over an element-->
+<!--mouseout event fires when the mouse cursor moves off an element-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MouseEvents</title>
+</head>
+<body>
+
+  <!--Write your HTML here-->
+  <p id="Mouse-thing">Move your mouse here!</p>
+
+
+<script>
+
+  //Write your script here//
+  let message = document.querySelector('#mouse-thing')
+
+  message.addEventListener('mouseover', function(){
+    message.innerHTML = 'Your mouse is on this message'
+  })
+
+</script>
+
+
+
+</body>
+</html>
