@@ -14,17 +14,91 @@
 <body>
 
   <!--Write your HTML here-->
-  <p id="Mouse-thing">Move your mouse here!</p>
-
+  <p id="mouse-thing">Move your mouse here!</p>
 
 <script>
+///Before counter was added::
+  // //Write your script here//
+  // //Select the #mouse-thing paragraph
+  // let message = document.querySelector('#mouse-thing')
+  //
+  // //Add a mouseover event listener to change the message when
+  // //the mouse cursor moves over the paragraph
+  // message.addEventListener('mouseover', function() {
+  //   message.innerHTML = 'Your mouse is on this message'
+  // })
+  //
+  //   //You can add multiple events to one element
+  // message.addEventListener('mouseout', function(){
+  //     message.innerHTML = 'Your mouse is not on this message.'
+  // })
 
-  //Write your script here//
-  let message = document.querySelector('#mouse-thing')
+  //****First try at the "Your Turn" to count and print the mousovers (WRONG!)***
+  // message.addEventListener('mouseover', function(){
+  //     for(let x=0, x, 'mouseover', x++)
+  //         let mouseover = mouseover(x)
+  //           message.innerHTML = 'Your mouse has moved over this area 'mouseover(x)' times.'
+  // })
+//------------------------------
+  //Retry with Clara's video 6 of adding a counter that prints the mouseover:
+    //Write your script here//
+    //Select the #mouse-thing paragraph
 
-  message.addEventListener('mouseover', function(){
-    message.innerHTML = 'Your mouse is on this message'
-  })
+    let mouseCount = 0
+
+    let message = document.querySelector('#mouse-thing')
+
+    //***Before adding if/else statement***:
+    // //Add a mouseover event listener to change the message when
+    // //the mouse cursor moves over the paragraph
+    // message.addEventListener('mouseover', function() {
+    //     //increase mouseCount by 1 here:
+    //     mouseCount++ //or mousecount = mousecount + 1, same thing.
+    //     message.innerHTML = 'Your mouse has been on this message ' + mouseCount + ' times!'
+    //     //^^^modify this message to include mouseCount (just add a plus sign!! (concatenate)
+    // })
+
+    //***To add an if/else statement in javascript***:
+
+    //Add a mouseover event listener to change the message when
+    //the mouse cursor moves over the paragraph
+    message.addEventListener('mouseover', function() {
+        //increase mouseCount by 1 here:
+        mouseCount++ //or mousecount = mousecount + 1, same thing.
+        //conditional code goes within the curly braces
+        //can use ifelse if there are more conditions to check.
+        if (mouseCount == 1){
+            message.innerHTML = 'Mouse has been on this message ' + mouseCount + ' time.'
+        } else {
+            message.innerHTML = 'Your mouse has been on this message ' + mouseCount + ' times!'
+            //^^^modify this message to include mouseCount (just add a plus sign!! (concatenate)
+        }
+    })
+
+    //You can add multiple events to one element
+    message.addEventListener('mouseout', function(){
+        message.innerHTML = 'Your mouse is not on this message.'
+    })
+
+  //Want to count how many times the user has put their mouse
+  //on the message, to do that we need a variable.
+
+  //***Variable examples:***
+  //All numbers (integer AND floating point) are stored in number variables.
+  //Integer number variable
+  // let quantity = 6
+  //
+  // //Floating point number variable
+  // let price = 123.45
+  //
+  // //String variable
+  // let text = 'Hello world'
+  // let moreText = 'Double or single quotes are both okay, be consistent. '
+  //   //commonly single quotes are more widely used.
+  //
+  // //Boolean variables (true OR false! (lowercase), not True and False (uppercase) like python)
+  // let summer = false
+  // let winter = true
 
 </script>
 
