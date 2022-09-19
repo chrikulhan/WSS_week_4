@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Processing and Validation Notes</title>
+</head>
+<body>
+
+<script>
+
+  //notes:
+  // **Form Processing and Validation**
+
+  // -JavaScript is commonly used for form processing and validation
+  //  one of the earliest uses for JavaScript
+
+  //  -Checking for missing data, or invalid data, and warning the user
+  //   before a form is submitted to a server for processing
+  //   can save a lot of frustration
+  //examples: let credit card user know their card isn't the correct length
+
+//   **Forms**
+
+  //   Two types – some work with data on the client side;
+  //    usually with client-side JavaScript
+  //   Another example: http://www.w3schools.com/js/tryit.asp?filename=tryjs_celsius
+
+  //   -Some submit data to a web server to be processed by server-side code
+  //   (more on this later in the class); examples username and password;
+  //   order/payment info for ecommerce sites
+      //   -But, you can precede server processing with client-side JavaScript validation
+      //   -Better user experience, saves a server round-trip with invalid data if errors
+      //    can be corrected at the client
+          //   -For example, client-side JS can check if a credit card number is the right length,
+          //      the expiry date is a valid date and is in the future…
+          //   -The server will still need to check if the card can be used for the transaction
+
+  // ***If Statements ***
+
+    // Similar operators as Java, C#, Python
+  //  == is exactly (equals)
+  //  <   less than
+  //  <=  less than or equal
+  //  >   greater than
+  //  >=  greater than or equals
+  //  !=  NOT equal
+    // And two extras === and !==
+  //**More stringent^^ test of equality.
+
+      // -The ( ) around the condition are required
+      // -Use { } to contain the conditional statement(s)
+
+  let orderQuantity = -1
+
+  if(orderQuantity < 0) {
+    console.log('Error - cannot order a negative number!')
+    //This would still work as expected if orderQuantity
+    // was the string "-1" (if it had quotes around it.)
+    // JavaScript does **type coercion** -
+        // it will try to convert one of the operands to make the
+        // comparison make sense
+
+  }
+
+  // ***If Statements**
+
+  // Use three equal signs to force JS to check the type of the variable
+  // being compared
+  // Also !== operator
+
+  //**Type coercion**
+    //Where the double equals and triple equals have different utility.
+
+  let grade = 100
+
+  //check if the type the same AND the data the same? use ===
+  if(grade ===100){
+    console.log('You aced the quiz!')
+  }
+
+  //when doing form validation, typically use ==
+  if(grade =='100'){
+    console.log('The number 100 is the same as the string "100" with' +
+            'double equals ==')
+  }
+
+  if (grade === '100'){
+    console.log('This will not be printed')
+  } else {
+    console.log('The number 100 is NOT the same as the string "100"' +
+            'with triple equals ===')
+  }
+
+
+
+
+</script>
+
+</body>
+</html>

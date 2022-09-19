@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User input forms</title>
+</head>
+<body>
+
+<!--The goal of this will be to use the input name to
+ display the same name in the output (using JavaScript below)-->
+  <p>Please enter your name</p>
+  <input type="text" id="username">
+  <button id="save-user-name">Save</button>
+
+  <p id="welcome-message"></p>
+
+<script>
+
+  //**before changes to check to see if name is at least 2 characters long **:
+
+  // let saveButton = document.querySelector('#save-user-name')
+  // let nameInput = document.querySelector('#username')
+  // let welcomeMessage = document.querySelector('#welcome-message')
+  //
+  // saveButton.addEventListener('click', function(){
+  //   //This part is what figures out what the name is vvv
+  //   //the value is whatever is typed in the box.
+  //   //This will save the value into the new variable called name vvv.
+  //   let name = nameInput.value
+  //
+  //   welcomeMessage.innerHTML = `Welcome, ${name}!`
+  //   //***There are backticks (`) used in the template strings in the above ^^^ line.
+  //   //Could use instead:
+  //   // welcomeMessage.innerHTML = 'Welcome, ' + name +'!'
+
+  //**AFTER changes to check to see if name is at least 2 characters long **:
+  let saveButton = document.querySelector('#save-user-name')
+  let nameInput = document.querySelector('#username')
+  let welcomeMessage = document.querySelector('#welcome-message')
+
+  saveButton.addEventListener('click', function(){
+    //This part is what figures out what the name is vvv
+    //the value is whatever is typed in the box.
+    //This will save the value into the new variable called name vvv.
+    let name = nameInput.value
+
+    if (name.length < 2) {
+      welcomeMessage.innerHTML = 'Please enter at least 2 letters.'
+    } else {
+    welcomeMessage.innerHTML = `Welcome, ${name}!`
+    }
+    //***There are backticks (`) used in the template strings in the above ^^^ line.
+    //Could use instead:
+    // welcomeMessage.innerHTML = 'Welcome, ' + name +'!'
+
+
+
+  })
+
+
+
+</script>
+
+</body>
+</html>
