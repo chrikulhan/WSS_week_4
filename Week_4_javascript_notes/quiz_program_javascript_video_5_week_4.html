@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QuizProgram</title>
+</head>
+<body>
+
+<!--Write your HTML content here-->
+  <p>What is the capital of Wisconsin?</p>
+  <button class="wrong-answer">Bayfield</button>
+    <!--differentiate the right answer from the wrong answer
+    Give the correct answer the id="correct-answer"-->
+    <!--**Following CSS style recommendations (names separated by dashes)-->
+  <button id="correct-answer">Madison</button>
+  <button class="wrong-answer">Milwaukee</button>
+  <!--^^^used <button class="wrong-answer"> to select multiple wrong answers at a time.-->
+
+  <p id="result"></p>
+
+<script>
+// <!--  create temporary variable to try out the document.querySelector-->
+//   let button = document.querySelector('button')
+//   console.log(button)
+//   This ^^^ will return the first thing that matches, not useful to select
+//    all the wrong answers at the same time, but must be at the top to see it.
+
+  //Select the correct answer button by ID
+  let correctAnswerButton = document.querySelector('#correct-answer')
+    // console.log(correctAnswerButton) //used to check if this works correctly by looking
+  //in the console on the web dev tools
+
+  //Save the default color of the buttons in this page:vvv
+  //This is saving whatever the original color was to set it back to.
+  let defaultButtonColor = correctAnswerButton.style.background
+
+  //Select the result paragraph by ID. This will be used to
+  //display a 'Correct answer!' message when the user clicks the correct
+  //button
+  let result = document.querySelector('#result')
+
+  //add query selector All to find all the wrong answers in our page:
+  //this is selecting the CSS class ('.wrong-answer')
+  let wrongAnswerButtons = document.querySelectorAll('.wrong-answer')
+  // console.log(wrongAnswerButtons) //used to check if this works correctly by looking
+//in the console on the web dev tools
+
+//  add an event listener to both wrong answer buttons, need some kind of a loop.
+// more common way to write loops:
+  wrongAnswerButtons.forEach(function(wrongAnswerButton) { //loop = repeats for each
+    //element in the wrongAnswerButtons nodeList
+
+    //forEach has one argument which is another function definition.
+    //check: //console.log(wrongAnswerButton) //shows in the dev tools log where all this
+    //element is.
+
+    wrongAnswerButton.addEventListener('click', function() {
+      result.innerHTML = 'Wrong answer, try again?'
+
+      //This was added to change the correct answer to change back when the wrong
+      //answer is subsequently pressed: vvv
+      correctAnswerButton.style.background = defaultButtonColor
+
+      //So now when you look at the page, the correct answer says, "Correct answer",
+      //and the wrong answer says," Wrong answer, try again?
+    })
+  })
+
+//***Imperative-style for loop could be used in place of "wrongAnswerButtons.forEach(above)***
+// x is the loop counter, counts how many times a loop needs to repeat
+// x++ is what you do after every each loop counter to increase x by one.
+// when do you stop the loop? when x is greater than the wrong answer buttons.
+//or repeat when x is less than the wrongAnswerButtons:
+//   for (let x=0; x, wrongAnswerButtons.length; x++){
+//     let wrongAnswerButton = wrongAnswerButtons(x) //indexing the nodelist.
+//
+//     wrongAnswerButton.addEventListener('click', function() {
+//       result.innerHTML = 'Wrong answer, try again?'
+//       correctAnswerButton.style.background = defaultButtonColor
+//   })
+
+  //Add event listener to the correct answer button
+  correctAnswerButton.addEventListener('click', function() {
+    result.innerHTML = 'Correct answer!' //Display message in the result paragraph.
+  //change the style of the Madison button when it's clicked:
+    correctAnswerButton.style.background ='yellow'
+        //wrong answer, nothing happened, the style of the Madison button changes when
+        //it is clicked to yellow.
+
+  //***Add the same event listener to all the wrong answers at the same time.***
+  //Finding elements with querySelector and querySelectorAll
+    // Select element(s) using CSS selectors
+  //document.querySelector returns:
+    // -the first match even if many elements match.
+    // -Returns null if nothing matches
+  //document.querySelectorAll:
+    // -returns a NodeList* of all matching elements;
+    // -returns an empty NodeList if nothing matches
+
+  //   *NodeList is like a list of elements, can loop over it, access element by index
+
+  //  How do we select multiple items at the same time?
+  //  Add a class ot the <button> in HTML
+  //  example:: added to above HTML <button class =" wrong answer">Bayfield</button>
+
+  })
+</script>
+
+</body>
+</html>
