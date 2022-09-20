@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Your turn 3</title>
+</head>
       <!--Your turn:-->
 
       <!--10. In the HTML, add a Clear button. Give it the id="clear"-->
@@ -13,21 +14,20 @@
 
   <!--Use the list program you just worked with: -->
 
-<!--13. Use an if-statement to prevent the user adding more than
-        10 list items. -->
-<!--14. Ignore any clicks on the Add button if there are 10 list items-->
+
+<!--14. Ignore any clicks on the Add button if there are 10 list items
+        (actually created an alert instead of nothing happening)-->
 <!--15. If the user clicks the Clear button, then they will be able to
-        add more list items, up to 10-->
+        add more list items, up to 10 (this happens automatically when the
+        code is put in the correct order-->
 
-  <!--stopped at video 8 timestamp 9:50 (do 13, 14 and 15 ^^^)-->
-
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-      <meta charset="UTF-8">
-      <title>JavaScript_Creating_Elements_Keyup_event_and_keycodes</title>
-</head>
-<body>
+<!--      <!DOCTYPE html>-->
+<!--      <html lang="en">-->
+<!--      <head>-->
+<!--      <meta charset="UTF-8">-->
+<!--      <title>JavaScript_Creating_Elements_Keyup_event_and_keycodes</title>-->
+<!--</head>-->
+<!--<body>-->
 
 <!--***Creating Elements***-->
 
@@ -45,14 +45,16 @@
 2. put those things in the body
 3. give each of the elements an id-->
 
-<p>Enter some text to add to the list: </p>
-<input id="new-text"></input>
-<button id ="add-text">Add</button>
-<!--10. In the HTML, add a Clear button. Give it the id="clear"-->
-<button id="clear-text">Clear</button>
+<body>
+  <p>Enter some text to add to the list: </p>
+  <input id="new-text"></input>
+  <button id ="add-text">Add</button>
+  <!--10. In the HTML, add a Clear button. Give it the id="clear"-->
+  <button id="clear-text">Clear</button>
 
-<!--empty unordered list-->
-<ul id="list-of-text"></ul>
+  <!--empty unordered list-->
+  <ul id="list-of-text"></ul>
+</body>
 
 <script>
   // order of operations continued
@@ -70,13 +72,51 @@
   //  -Add event listeners to the add button
   //  because we want something to happen when that is clicked.
 
+  //13a. set up :Use an if-statement to prevent the user adding more than 10 list items.
+  let listItemCount = 0 //tracks number of items in the list, used below.
+  let maxItems = 10 //max number to be in the list, used below
+
+//16. Allow the user to press enter to click on the add button:
+  document.addEventListener('keyup', function(){ //this will allow to you know when
+    //the enter key is pressed.
+    //**Inside an event listener, there are a number of things that are known:
+    //--for a keyup event, it is know which key was pressed.
+    //console.log(event.keyCode) //this will allow you to use dev tools (inpect)
+    //in the browser to see the key stroke codes that are associated with each
+    //key pressed. Every key has a key code.
+    //The enter key keyCode = 13
+    ///_____
+
+    //In order to allow the user to press enter to Add an item to the list:
+    if (event.keyCode == 13) {
+        addButton.click()
+    }
+  })
+
   addButton.addEventListener('click', function(){
+
 //6.Read the text in the input
     let newText = textInput.value
-    console.log(newText) //make sure everything is set up correct and
+    // console.log(newText)
+    //^^^use console.log (newText) to make sure everything is set up correct and
     //elements are being found correctly and
     // have the right event listener attached
     // the right thing.
+
+//13c. Make sure there can be no empty list items added. Needs to be after
+    //the newText = textInput.value and before the rest, because it will
+    //pause the operation if the user doesn't type in anything.
+    if (newText.length === 0) { //makes sure there is something typed in the list
+      alert('Please enter something into the list.')
+      return
+    }
+
+//13b/14. Use an if-statement to prevent the user adding more than 10 list items.
+    if (listItemCount >= maxItems){ //makes sure there aren't too many elements in the list
+      alert('No more items can be added.')
+      return
+    }
+
 // 7. Create a new li element
     //ask the document to create an element
     // (have to give it a tag name, here ('li')
@@ -98,6 +138,8 @@
 // 9. Clear the text in the input.
     //we can set the text as well, '' is an empty string, so it will be empty.
     textInput.value = ''
+//13c. make sure the counter counts the list items:
+    listItemCount++
   })
 
   //12. Add an event handler to the clear button. The event handler
@@ -106,7 +148,8 @@
     // let removeText = clearButton //this is wrong!!
     //   removeText.innerHTML = '' //this is wrong!!
     textList.innerHTML = '' //I wasn't interacting with the correct data.
-
+//13d. Set elements in list back to zero:
+    listItemCount = 0
   })
 
 </script>
