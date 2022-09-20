@@ -68,10 +68,6 @@
   // 11. In the script, select the clear button.
   let clearButton = document.querySelector('#clear-text')
 
-  //5. What events do we need to respond to?
-  //  -Add event listeners to the add button
-  //  because we want something to happen when that is clicked.
-
   //13a. set up :Use an if-statement to prevent the user adding more than 10 list items.
   let listItemCount = 0 //tracks number of items in the list, used below.
   let maxItems = 10 //max number to be in the list, used below
@@ -93,6 +89,9 @@
     }
   })
 
+  //5. What events do we need to respond to?
+  //  -Add event listeners to the add button
+  //  because we want something to happen when that is clicked.
   addButton.addEventListener('click', function(){
 
 //6.Read the text in the input
@@ -119,20 +118,22 @@
 
 // 7. Create a new li element
     //ask the document to create an element
-    // (have to give it a tag name, here ('li')
+    // (have to give it a tag name, here ('li'))
     //Also make this happen in a new variable
-
     let newListItem = document.createElement('li')
+
 // 8a. The li element text should be the text from the input
     //newListItem isn't yet attached to the page, but we can still
     //do things like innerHTML that will be the text from the input.
     newListItem.innerHTML = newText
+
     //In order to make the list item appear in the flow of the page,
     //we need to attach it to our page somehow.
     //The way this is done is by attaching an element to another element
     //OR by nesting certain elements within other elements
-    //(for example an list item within an unordered list is a child
+    //(for example a list item within an unordered list is a child
     //of the unordered list.)
+
 //8b. Add the new "li" element as a child of the "ul" element.
     textList.appendChild(newListItem)
 // 9. Clear the text in the input.

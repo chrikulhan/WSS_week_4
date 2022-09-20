@@ -7,24 +7,26 @@
 <body>
 <!--Question 1, Create List, 5 points-->
 
-<!--Part 1a1: Create a web page with an empty unordered list,-->
-<p>This is my new list in JavaScript!</p> <!--purposely left this is a weird configuration (list on top, entry on bottom)-->
-    <ul id="list-of-text"></ul>
+<!--Part 1a1: Create a web page ,-->
+<p>This is my new list in JavaScript!</p>
+
+<!--1a2: an input text box-->
+    <input id="new-text">
 
 <!--1a3:and add button.-->
     <button id ="add-text">Add</button>
 
-<!--1a2: an input text box-->
-<label for="new-text"></label><input id="new-text">
-
 <!--Part 1b1: Add a clear button. -->
     <button id="clear-text">Clear</button>
 
-<!--Part 1d:  Add validation using JavaScript. The form should only accept-->
-<!--text of length between 1 and 50 characters-->
+<!--1a1b.with an empty unordered list, rearranged, because I was annoyed.-->
+    <ul id="list-of-text"></ul>
 
-<!--Ignore the user input if there is no text entered-->
-<!--Display an alert error message if it the text too long -
+<!--Part 1d:  Add validation using JavaScript.
+Part 1d1.The form should only accept text of length between 1 and 50 characters-->
+
+
+<!--Part 1d3.Display an alert error message if the text is too long -
 more than 50 characters. Do not clear the text in the input.-->
 
 <script>
@@ -34,40 +36,48 @@ more than 50 characters. Do not clear the text in the input.-->
     let textList = document.querySelector('#list-of-text')
     let clearButton = document.querySelector('#clear-text')
 
-  /*1a4: When the user types text into the input form and clicks the button,
-          the text should be added to the list, as a new list element.*/
-  addButton.addEventListener('click', function(){ //the page is listening for clicks to know when to add a list item.
+
+
+    /*Part 1c1: Prevent the user adding more than 10 items to the list.
+    If the clear button is clicked, the user may keep adding items.*/
+    let listItemCount = 0 //tracks number of items in the list, used below.
+    let maxItems = 10  //max number to be in the list, used below
+
+    /*1a4: When the user types text into the input form and clicks the button,
+            the text should be added to the list, as a new list element.*/
+    addButton.addEventListener('click', function(){ //the page is listening for clicks to know when to add a list item.
       let newText = textInput.value
       let newListItem = document.createElement('li')
 
-      /*Part 1c1: Prevent the user adding more than 10 items to the list.
-        If the clear button is clicked, the user may keep adding items.*/
-      let listItemCount = 0 //tracks number of items in the list, used below.
-      let maxItems = 10  //max number to be in the list, used below
 
       newListItem.innerHTML = newText //where the new list element is created.
 
-      // 1a4:When the text has been added to the unordered list, clear the text from the input.
-      textInput.value = '' //where the text is cleared from the input.
-      textList.appendChild(newListItem) //adds to the list on the page.
+      textList.appendChild(newListItem) //adds to the list on the page
 
+        // 1a5:When the text has been added to the unordered list, clear the text from the input.
+        textInput.value = '' //where the text is cleared from the input.
+
+      // Part 1d2.Ignore the user input if there is no text entered
+        if (newText.length === 0) { //makes sure there is something typed in the list
+            alert('Please enter something into the list.')
+            return
+        }
       //Part 1c2: Prevent the user adding more than 10 items to the list.
-      if (listItemCount >= maxItems){ //makes sure there aren't too many elements in the list
+      if (listItemCount >= maxItems) { //makes sure there aren't too many elements in the list
           alert('No more items can be added.')
           return
-        }
+      }
+        //Part 1c3: Prevent the user adding more than 10 items to the list.
+        listItemCount++
+  })
     /*Part 1b2: (Add a clear button.) When clicked, all the li elements should be removed
         from the page so the ul list is empty.*/
     clearButton.addEventListener('click', function(){
         textList.innerHTML = ''
     })
          //clears the unordered list info on the page.
-
-
-
-
-
-
+    //Part 1c4: Prevent the user adding more than 10 items to the list.
+    listItemCount = 0
 </script>
 
 </body>
