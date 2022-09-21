@@ -22,10 +22,6 @@
 <!--1a1b.with an empty unordered list, rearranged, because I was annoyed.-->
     <ul id="list-of-text"></ul>
 
-<!--Part 1d:  Add validation using JavaScript.
-Part 1d1.The form should only accept text of length between 1 and 50 characters-->
-
-
 <!--Part 1d3.Display an alert error message if the text is too long -
 more than 50 characters. Do not clear the text in the input.-->
 
@@ -33,8 +29,8 @@ more than 50 characters. Do not clear the text in the input.-->
 
     let textInput = document.querySelector('#new-text')
     let addButton = document.querySelector('#add-text')
-    let textList = document.querySelector('#list-of-text')
     let clearButton = document.querySelector('#clear-text')
+    let textList = document.querySelector('#list-of-text')
 
     /*Part 1c1: Prevent the user adding more than 10 items to the list.
     If the clear button is clicked, the user may keep adding items.*/
@@ -45,36 +41,45 @@ more than 50 characters. Do not clear the text in the input.-->
             the text should be added to the list, as a new list element.*/
     addButton.addEventListener('click', function(){ //the page is listening for clicks to know when to add a list item.
       let newText = textInput.value
+        // console.log(newText)
 
-        // Part 1d2.Ignore the user input if there is no text entered
-        if (newText.length === 0) { //makes sure there is something typed in the list
-            alert('Please enter something into the list.')
-            return
+        // Part 1d2.Ignore the user input if there is no text entered, also part of 1d (greater than 0 characters)
+      if (newText.length === 0) { //makes sure there is something typed in the list
+          alert('Please enter something into the list.')
+          return
         }
-        //Part 1c2: Prevent the user adding more than 10 items to the list.
-        if (listItemCount >= maxItems) { //makes sure there aren't too many elements in the list
-            alert('No more items can be added.')
-            return
+/*Part 1d:  Add validation using JavaScript.
+Part 1d1.The form should only accept text of length between 1 and 50 characters*/
+      if(newText.length >50) {
+          alert('Please enter between 1 and 50 characters to add to the list.')
+          return
+      }
 
-      let newListItem = document.createElement('li')
+        //Part 1c2: Prevent the user adding more than 10 items to the list.
+      if (listItemCount >= maxItems) { //makes sure there aren't too many elements in the list
+          alert('No more items can be added.')
+          textInput.value = '' //clears the text in the text box
+          return
+        }
+
+      let newListItem = document.createElement('li') //create a new list item with a new variable
 
       newListItem.innerHTML = newText //where the new list element is created.
 
-      textList.appendChild(newListItem) //adds to the list on the page
+      textList.appendChild(newListItem) //adds the new list item to the list on the page
 
         // 1a5:When the text has been added to the unordered list, clear the text from the input.
 
             textInput.value = '' //where the text is cleared from the input.
 
-      }
         //Part 1c3: Prevent the user adding more than 10 items to the list.
         listItemCount++
-  })
+    })
     /*Part 1b2: (Add a clear button.) When clicked, all the li elements should be removed
         from the page so the ul list is empty.*/
     clearButton.addEventListener('click', function(){
         textList.innerHTML = '' //clears the unordered list info on the page.
-
+        textInput.value = '' //clears the text in the box (that hasn't yet been added)
     //Part 1c4: Prevent the user adding more than 10 items to the list.
         listItemCount = 0
     })
