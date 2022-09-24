@@ -78,11 +78,11 @@ You should not need to modify any of the HTML.-->
 <h2>Student List</h2>
 
 <p>There are
-    <span id="student-count">
-          <!-- use JavaScript to count the number of students, and show here -->
+    <span id="student-count">0
         </span>
     student(s) in the club.</p>
 
+<p id="welcome-message"></p>
 
 <ul id="student-list">
     <!-- use JavaScript to create li elements  -->
@@ -92,7 +92,54 @@ You should not need to modify any of the HTML.-->
 
 <script>
 
-    let addStudentToList = document.querySelector(())
+    let studentNameInput = document.querySelector('#student-name')
+    let studentIDInput = document.querySelector('#student-id')
+    let studentGPAInput = document.querySelector('#student-gpa')
+    let addStudentInfoToList = document.querySelectorAll('#student-list')
+    let welcomeMessage = document.querySelector('#welcome-message')
+
+    //Come back to this when the rest of the form is layed out.
+    // let CountOfStudentsAdded = 0
+
+    let deleteStudentFromListButton = document.querySelector('button')
+
+    // CountOfStudentsAddedToListSpan.addEventListener('click', function(event){
+    //     var element = event.currentTarget;
+    //     element.clicks = (element.clicks || 0) + 1;
+    //     console.log(element.clicks);
+    // //    reference: https://stackoverflow.com/questions/27153750/count-clicks-on-element-with-javascript
+    //     })
+
+    addButton.addEventListener('click', function(){
+        let newStudentNameInput = studentNameInput.value
+            // console.log(newStudentNameInput)
+        let newStudentIDInput = studentIDInput.value
+        let newStudentGPAInput = studentGPAInput.value
+
+        if (newStudentNameInput.length < 1 ){
+            welcomeMessage.innerHTML ='Please enter at least 1 letter for your name.'
+            } else
+                return
+        if (newStudentIDInput.length !== 8){
+                welcomeMessage.innerHTML ='Please enter at least 1 letter.'
+            } else
+                return
+        if (newStudentGPAInput < 0){
+                welcomeMessage.innerHTML ='Please enter a GPA between 0 and 4'
+            } else
+                return
+        if (newStudentGPAInput > 4){
+                welcomeMessage.innerHTML='Please enter a GPA between 0 and 4.'
+            } else
+                return
+
+        let newLineList;
+        newLineList = document.createElement('li');
+        newLineList = '`${newStudentNameInput}` `${newStudentIDInput}` ${newStudentGPAInput}`'
+            console.log(newLineList)
+        addStudentInfoToList.appendChild(newLineList)
+    })
+
 
 
     /* Add the following functionality to this page
@@ -101,9 +148,12 @@ You should not need to modify any of the HTML.-->
         * Using JavaScript, display 0 in the span#student-count  (1pt)
 
         * Add an event listener so that when button#add-students is clicked:
-            - Read the value from the student-name input, save in a variable. If the name is not entered, show an alert error message and return. (1pt)
-            - Read the value from the student-id input, save in a variable. If the id is not entered, show an alert error message and return. (1pt)
-            - Read the value from the student-gpa input, save in a variable. If the GPA is not entered, or is not in the range 0-4, show an alert error message and return.  (1pt)
+            - Read the value from the student-name input, save in a variable. If the name is not entered, show an alert
+            error message and return. (1pt)
+            - Read the value from the student-id input, save in a variable. If the id is not entered, show an alert
+            error message and return. (1pt)
+            - Read the value from the student-gpa input, save in a variable. If the GPA is not entered, or is not in
+            the range 0-4, show an alert error message and return.  (1pt)
             - Create a new li element (1pt)
             - Set the innerHTML of the li element to a string containing the student's name, id, and GPA  (1pt)
                 for example "Beyonce Knowles, id: aa1234bb, GPA 3.8"
@@ -111,7 +161,8 @@ You should not need to modify any of the HTML.-->
             - Add a click event handler to the new li element.  (3pt)
             - When the li element is clicked, add the class="selected" to that li element.
             - When that li element is clicked again, remove the class="selected" from that li element
-                In other words, clicking a li element will toggle the selected class. https://www.w3schools.com/howto/howto_js_toggle_class.asp
+                In other words, clicking a li element will toggle the selected class.
+                https://www.w3schools.com/howto/howto_js_toggle_class.asp
             - Add the new li element to ul#student-list element (1pt)
             - Clear the values of the three input elements (1pt)
             - Update the span#student-count value to the new number of students (1pt)
@@ -119,9 +170,17 @@ You should not need to modify any of the HTML.-->
         * Add an event listener so that when button#remove-selected-students is clicked:
             - Remove all of the elements with the class="selected" from the list.   (3pt)
             - Using the remove() function on an element will remove it. Example https://jsfiddle.net/rk9pm4vg/
+            // You should not need to modify any of the HTML.*/
 
-        You should not need to modify any of the HTML.
-    */
+    //started from:https://jsfiddle.net/rk9pm4vg/
+    // deleteStudentFromListButton.addEventListener('click', function(){
+    //     let elementToDelete = document.querySelectorAll('.delete-me')
+    //     elementToDelete.forEach(function(element){
+    //         element.remove()
+    //     })
+    // })
+
+
 
 </script>
 
