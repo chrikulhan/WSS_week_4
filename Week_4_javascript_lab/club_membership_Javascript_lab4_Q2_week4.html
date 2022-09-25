@@ -95,13 +95,13 @@ You should not need to modify any of the HTML.-->
     let studentNameInput = document.querySelector('#student-name')
     let studentIDInput = document.querySelector('#student-id')
     let studentGPAInput = document.querySelector('#student-gpa')
-    let addStudentInfoToList = document.querySelectorAll('#student-list')
-    let welcomeMessage = document.querySelector('#welcome-message')
+    let newLineList = document.querySelector('#student-list')
 
-    //Come back to this when the rest of the form is layed out.
+    //Come back to this when the rest of the form is planned out.
     // let CountOfStudentsAdded = 0
 
     let deleteStudentFromListButton = document.querySelector('button')
+    let addButton = document.querySelector('#add-student')
 
     // CountOfStudentsAddedToListSpan.addEventListener('click', function(event){
     //     var element = event.currentTarget;
@@ -110,36 +110,41 @@ You should not need to modify any of the HTML.-->
     // //    reference: https://stackoverflow.com/questions/27153750/count-clicks-on-element-with-javascript
     //     })
 
+    //* Add an event listener so that when button#add-students is clicked:
     addButton.addEventListener('click', function(){
+
+        // - Read the value from the student-name input, save in a variable.
         let newStudentNameInput = studentNameInput.value
-            // console.log(newStudentNameInput)
+            console.log(newStudentNameInput)
+        //Read the value from the student-id input, save in a variable.
         let newStudentIDInput = studentIDInput.value
+            console.log(newStudentIDInput)
+        //Read the value from the student-gpa input, save in a variable.
         let newStudentGPAInput = studentGPAInput.value
+            console.log(newStudentGPAInput)
 
+        //If the name is not entered, show an alert error message and return. (1pt)
         if (newStudentNameInput.length < 1 ){
-            welcomeMessage.innerHTML ='Please enter at least 1 letter for your name.'
-            } else
-                return
-        if (newStudentIDInput.length !== 8){
-                welcomeMessage.innerHTML ='Please enter at least 1 letter.'
-            } else
-                return
-        if (newStudentGPAInput < 0){
-                welcomeMessage.innerHTML ='Please enter a GPA between 0 and 4'
-            } else
-                return
-        if (newStudentGPAInput > 4){
-                welcomeMessage.innerHTML='Please enter a GPA between 0 and 4.'
-            } else
-                return
+            alert ('Please enter at least 1 letter for your name.')
+            } else if (newStudentIDInput.length !== 8){
+            alert('Please enter your 8 digit student ID.')
+            } else if (newStudentGPAInput < 0){
+            alert('Please enter a GPA between 0 and 4')
+            } else if (newStudentGPAInput > 4){
+            alert('Please enter a GPA between 0 and 4.')
+            } else {
+            return
+        }
 
-        let newLineList;
-        newLineList = document.createElement('li');
-        newLineList = '`${newStudentNameInput}` `${newStudentIDInput}` ${newStudentGPAInput}`'
-            console.log(newLineList)
-        addStudentInfoToList.appendChild(newLineList)
+//Set the innerHTML of the li element to a string containing the student's name, id, and GPA  (1pt)
+//         for example "Beyonce Knowles, id: aa1234bb, GPA 3.8"
+//         Use a template string to generate this string
+        //reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+        newLineList = document.createElement('li')
+            newLineList.innerHTML = (`${newStudentNameInput} , id: ${newStudentIDInput} , GPA ${newStudentGPAInput}`)
+            textList.appendChild(newLineList)
+                console.log(newLineList)
     })
-
 
 
     /* Add the following functionality to this page
