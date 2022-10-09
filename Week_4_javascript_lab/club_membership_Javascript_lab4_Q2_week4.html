@@ -55,6 +55,11 @@
 
 <script>
 
+    let studentCount = 0 //empty set before students get added, starts at zero
+    let studentCountSpan = document.querySelector('#student-count') //find the place in the code to display the number
+
+    studentCountSpan.innerHTML = studentCount //set it to the number variable.
+
     let studentNameInput = document.querySelector('#student-name')
     let studentIDInput = document.querySelector('#student-id')
     let studentGPAInput = document.querySelector('#student-gpa')
@@ -65,12 +70,8 @@
     // * Using JavaScript, display 0 in the span#student-count  (1pt)
     //reference: https://stackoverflow.com/questions/1358810/how-do-i-change-the-text-of-a-span-element-using-javascript
     document.getElementById("student-count").textContent = "0"
-    let CountOfStudentsAdded = 0
 
-    //TODO add the number of students added equal zero at the start
-    //TODO also add the CountOfStudentsAdded++ somewhere below to get an accurate count.
-
-    let removeStudentFromList = document.getElementById('#remove-selected-students')
+    let removeStudentFromList = document.querySelector('#remove-selected-students')
     let addButton = document.querySelector('#add-student')
 
     //* Add an event listener so that when button#add-students is clicked:
@@ -107,57 +108,50 @@
 //         Use a template string to generate this string
         //reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
-        {newLineList.innerHTML = (`${newStudentNameInput} , id: ${newStudentIDInput} , GPA ${newStudentGPAInput}`)
-            StudentLineInfoList.appendChild(newLineList)
+        {
+            newLineList.innerHTML = (`${newStudentNameInput} , id: ${newStudentIDInput} , GPA ${newStudentGPAInput}`)
+            StudentLineInfoList.appendChild(newLineList) //will add the list line to be visible for the user.
 
             studentNameInput.value = ''
             studentIDInput.value = ''
-            studentGPAInput.value = ''}
+            studentGPAInput.value = ''
 
-            CountOfStudentsAdded++
+            studentCount++
+            studentCountSpan.innerHTML = studentCount //will update the text in the span.
+        }
+            console.log(studentCountSpan)
+            //removing
 
-        // https://stackoverflow.com/questions/1358810/how-do-i-change-the-text-of-a-span-element-using-javascript
-        //     document.getElementById("student-count").textContent=CountOfStudentsAdded.value
-
-        let span = document.getElementById("student-count"); //this is wrong or not working.vvv
-        let txt = document.createTextNode(CountOfStudentsAdded.value);
-        span.appendChild(txt);
-        console.log(newLineList)
-    })
-
-//https://stackoverflow.com/questions/13530014/how-to-add-both-mouseover-and-click-event-at-same-time
-    document.addEventListener('mouseover click', function (event) {
-        let element = document.getElementById("student-list");
-        element.classList.toggle('.selected');
-        // if (event.type === "mouseover") {
-        //     // Mouse-Over code here
-        // } else if (event.type === "click") {
-        //     // Click code here
-    })
-
-    // TODO remove student from list using toggle;
-    //references: https://www.w3schools.com/howto/howto_js_toggle_class.asp
-    //https://www.w3schools.com/js/js_htmldom_eventlistener.asp
-    //https://www.w3schools.com/js/tryit.asp?filename=tryjs_addeventlistener_add_many2
-
-    let x = document.getElementById("student-list");
-    x.addEventListener('mouseover', myFunction);
-    x.addEventListener('click', mySecondFunction)
-    function mySecondFunction() {
-        let element = document.getElementById("student-list");
-        element.classList.toggle(".selected");
-
-
-        //TODO Remove all of the elements with the class="selected" from the list when the remove button is clicked.   (3pt)
-        //started from:https://jsfiddle.net/rk9pm4vg/
-
-        removeStudentFromList.addEventListener('click', function () {
-            let elementToDelete = document.querySelectorAll('.selected')
-            elementToDelete.forEach(function (element) {
-                element.remove()
+        //TODO add event listener to newLineList(student added info)
+            newLineList.addEventListener('click', function(){
+                newLineList.classList.toggle('selected') //add class if not already there.
             })
+    })
+
+    removeStudentFromList.addEventListener('click', function () {
+        //remove selected students - li elements with the class selected
+        //find all the selected elements in a list:
+        let selectedStudentListItems = document.querySelectorAll('.selected')
+        //loop over the list of selected list items
+        selectedStudentListItems.forEach( function (studentElement){ //the argument is each element in turn
+            studentElement.remove()//remove from page
+            let studentCount = document.getElementById('.student-list')
+            studentCount ++
+            studentCountSpan.innerHTML = studentCount
         })
-    }
+    })
+
+    // //     //TODO Remove all of the elements with the class="selected" from the list when the remove button is clicked.   (3pt)
+    // //     //started from:https://jsfiddle.net/rk9pm4vg/
+    //
+    //     removeStudentFromList.addEventListener('click', function () {
+    //         //add or remove the selected class:
+    //         let elementToDelete = document.querySelectorAll('.selected')
+    //         elementToDelete.forEach(function (element) {
+    //             element.remove()
+    //         })
+    //     })
+    // }
 
 
     /* Add the following functionality to this page
