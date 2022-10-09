@@ -136,8 +136,8 @@
         selectedStudentListItems.forEach( function (studentElement){ //the argument is each element in turn
             studentElement.remove()//remove from page
             //TODO still working on making the counter correct after removing an item:
-            let studentCount = document.getElementById('.student-list')
-            studentCount ++
+            studentCount = studentCount - 1 //each click will result in one removed.
+            //I figured this out ^^ after I turned in the link, so everything should be good on this lab.
             studentCountSpan.innerHTML = studentCount
         })
     })
